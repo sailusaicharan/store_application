@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../model/cart_model.dart';
+import '../model/nuts_product_model.dart';
 import '../model/vegies_product_model.dart';
 
-class VegiesProductCard extends StatelessWidget {
-  final VegiesProduct product;
+class NutsProductCard extends StatelessWidget {
+  final NutsProduct product;
 
-  const VegiesProductCard({required this.product});
+  const NutsProductCard({required this.product});
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:store_application/model/cart_model.dart';
+import 'package:store_application/pages/payment/payment_page.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -20,10 +21,9 @@ class CartPage extends StatelessWidget {
                 ? Center(
                     child: Image.asset(
                     'assets/images/empty.jpg',
-                    width: 200, 
-                    height: 200, 
-                    fit: BoxFit
-                        .cover, 
+                    width: 200,
+                    height: 200,
+                    fit: BoxFit.cover,
                   ))
                 : ListView.builder(
                     itemCount: cart.items.length,
@@ -76,13 +76,28 @@ class CartPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Total: ${cart.items.isNotEmpty ? '\$${cart.totalPrice.toStringAsFixed(2)}' : '\$0.00'}',
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.bold),
                 ),
+               ElevatedButton(
+  onPressed: () {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => PaymentPage(),
+      ),
+    );
+  },
+  style: ButtonStyle(
+    backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
+    foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+  ),
+  child: const Text('Proceed to Payment'),
+),
+
               ],
             ),
           ),
